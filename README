@@ -1,6 +1,6 @@
-This project exists to keep a master list of IPs to block from web servers. The IPs are
-a list of hosting services around the world that are known to host various bots, spiders,
-scrapers, etc.
+This project exists to keep a master list of IPs to block from web servers. The
+IPs are a list of hosting services around the world that are known to host
+various bots, spiders, scrapers, etc.
 
 
 INSTALLATION INSTRUCTIONS
@@ -9,21 +9,30 @@ INSTALLATION INSTRUCTIONS
 To use it, copy it to your Apache http's conf.d dir:
 <ServerRoot>/conf.d/ip_blacklist.conf
 
-Ensure that it is included from the httpd.conf file. Look for the following line:
+Ensure that it is included from the httpd.conf file. Look for the following
+line:
+
 Include conf.d/*.conf
 
-If it isn't present, you can explicitly include this file with the following line:
+If it isn't present, you can explicitly include this file with the following
+line:
+
 Include conf.d/ip_blacklist.conf
 
-This file applies the blacklisted IPs to every single server request, regardless of what
-location the user agent requests. It will also override the access rules defined in
-directives such as <Directory> and <Files>. The following Apache documentation is helpful
-to understand how these directives are merged and override each other.
+This file applies the blacklisted IPs to every single server request, regardless
+of what location the user agent requests. It will also override the access rules
+defined in directives such as <Directory> and <Files>. The following Apache
+documentation is helpful to understand how these directives are merged and
+override each other.
+
 http://httpd.apache.org/docs/2.2/sections.html#mergin
 
-You might also include this file from an .htaccess file, but this is not quite as
-efficient as having httpd load the configuration on startup because it will read the
-.htaccess file every time a request is made to the server.
+You might also include this file from an .htaccess file, but this is not quite
+as efficient as having httpd load the configuration on startup because it will
+read the .htaccess file every time a request is made to the server. The tradeoff
+is that the server must be restarted each time the blacklist is updated, but
+updates normally don't happen too frequently.
+
 
 
 LICENSE AND COPYRIGHT
@@ -34,21 +43,22 @@ http://pushinginertia.com
 
 Released under the MIT license.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this
-software and associated documentation files (the "Software"), to deal in the Software
-without restriction, including without limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons
-to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or
-substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
-FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The latest version of this file is available on GitHub:
 https://github.com/pushinginertia/ip-blacklist
